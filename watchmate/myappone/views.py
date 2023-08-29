@@ -9,7 +9,9 @@ def movie_list(request):
     movies = Movie.objects.all()
     
     data = {
-        'movies':list(movies.values())
+        'movies':list(movies.values()),
+        'description': movie.description,
+        'active': movie.active
     }
     
     return JsonResponse(data)
