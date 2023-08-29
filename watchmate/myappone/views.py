@@ -5,13 +5,13 @@ from django.http import HttpResponse,JsonResponse
 # Create your views here.
 
 # --------------------------------------------------------------------------------------------
-def movie_list(request):
-    movies = Movie.objects.all()
+# def movie_list(request):
+#     movies = Movie.objects.all()
     
-    data = {
-        'movies':list(movies.values()),
-        'description': movie.description,
-        'active': movie.active
-    }
+#     data = {
+#         'movies':list(movies.values()),
+#         'description': movie.description,
+#         'active': movie.active
+#     }
     
-    return JsonResponse(data)
+#     return JsonResponse(data)
