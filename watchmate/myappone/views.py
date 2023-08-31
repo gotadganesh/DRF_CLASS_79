@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from myappone.models import Movie
-from django.http import HttpResponse,JsonResponse
+# from django.shortcuts import render
+# from myappone.models import Movie
+# from django.http import HttpResponse,JsonResponse
 
 # Create your views here.
 
