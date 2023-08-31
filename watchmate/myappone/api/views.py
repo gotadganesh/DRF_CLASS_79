@@ -33,19 +33,23 @@ def movie_details(request, pk):
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
 
-if request.method == 'GET':
-        movie = Movie.objects.get(pk=pk)
-        serializer = MovieSerializer(movie)
-        return Response(serializer.data)
+    if request.method == 'GET':
+        try:
+            movie = Movie.objects.get(pk=pk)
+        except Movie.DoesNotExist:
+            return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
+            
+            serializer = MovieSerializer(movie)
+            return Response(serializer.data)
 
-if request.method == 'PUT':
-    movie= Movie.objects.get(pk=pk)
-    serializer = MovieSerializer(movie,data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    else:
-        return Response(serializer.errors)
+    if request.method == 'PUT':
+        movie= Movie.objects.get(pk=pk)
+        serializer = MovieSerializer(movie,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
 
-if request.method == 'DELETE':
-        pass
+    if request.method == 'DELETE':
+            pass

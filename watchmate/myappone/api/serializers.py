@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from myappone.models import Movie
+from rest_framework import status
 
 
 class MovieSerializer(serializers.Serializer):
@@ -7,6 +8,7 @@ class MovieSerializer(serializers.Serializer):
     name = serializers.CharField()
     description = serializers.CharField()
     active = serializers.BooleanField()
+    
     
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
